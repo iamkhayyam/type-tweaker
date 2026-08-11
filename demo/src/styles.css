@@ -107,6 +107,16 @@ h1.display {
 @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(-5px); } }
 @media (prefers-reduced-motion: reduce) { .hint .arrow { animation: none; } }
 
+/* ── Serif pull-quote: gives the serif token a real home on the page ── */
+.pullquote { padding: 84px 0 8px; }
+.pullquote .pq-rule { width: 48px; height: 2px; background: var(--signal); margin-bottom: 30px; }
+.pullquote p {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: clamp(30px, 5.2vw, 58px); line-height: 1.18;
+  color: var(--paper); max-width: 900px; letter-spacing: 0.005em;
+}
+.pullquote em { color: var(--signal); font-style: italic; }
+
 /* ── Section label ── */
 .seclabel {
   display: flex; align-items: center; gap: 14px; margin: 96px 0 32px;

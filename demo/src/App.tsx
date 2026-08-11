@@ -54,6 +54,14 @@ export function App() {
           </span>
         </section>
 
+        <section className="pullquote">
+          <div className="pq-rule" />
+          <p>
+            Choose type the way you'd cast a voice —{' '}
+            <em>by ear, on the page, in context.</em>
+          </p>
+        </section>
+
         <div className="seclabel"><span className="n">01</span> Live specimen <span className="rule" /></div>
 
         <div className="grid">
