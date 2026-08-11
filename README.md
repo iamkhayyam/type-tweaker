@@ -4,7 +4,7 @@ A draggable, dependency-free dev panel for auditioning fonts **live on the page*
 
 Extracted from the build of *The Polyrhythmatics*, where it was used to pick calligraphy against a Swiss grotesk grid.
 
-![role tabs: Display · Body · Script · Mono · Serif — each candidate rendered in its own face](#)
+**→ [Live demo](https://iamkhayyam.github.io/type-tweaker/)** — open the panel, hover a font, watch the whole page re-skin.
 
 ## How it works
 
@@ -167,6 +167,17 @@ the `TweakerRole` shape documented above.
 - **Reset** — reverts every role to its `default`.
 - **Self-contained styling** — injects its own scoped stylesheet; no Tailwind or CSS import.
 - **Tree-shakeable** — gate with `import.meta.env.DEV` and it drops out of production bundles.
+
+## Using with AI agents
+
+There's an **[AGENTS.md](./AGENTS.md)** at the repo root — the cross-tool standard that
+coding agents (Claude Code, Cursor, Copilot Workspace, etc.) read automatically. Point an
+agent at this package from another project ("add `type-tweaker`") and it gets a concrete
+integration checklist: confirm the design uses `var(--font-*)` tokens (refactor if not),
+mount `<TypeTweaker>` behind a `DEV` gate, wire a `roles` config whose `cssVar`s match the
+project's real tokens and whose `sample`s use the project's real copy, plus how to commit a
+chosen font and the guardrails to respect (never ship the panel to production, never invent a
+Google Fonts `spec`, don't treat a `localStorage` audition as committed config).
 
 ## Notes
 
