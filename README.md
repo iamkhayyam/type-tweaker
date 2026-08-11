@@ -101,6 +101,63 @@ type FontOption = {
 };
 ```
 
+## Swapping a font in for good
+
+The panel is an **audition tool**, not persistence for your codebase. When you
+click a font, the pick is saved to `localStorage` and re-applied on reload — but
+only in *your* browser. Nothing in your repo changes. To actually ship a choice:
+
+1. **Land on a combination** in the panel, then hit **Copy stack**. You get the
+   chosen font per role plus a ready-to-paste Google Fonts URL:
+
+   ```
+   Display: Space Grotesk
+   Script: Pinyon Script
+   ...
+   https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Pinyon+Script&display=swap
+   ```
+
+2. **Load the fonts** — drop that URL into your `<head>` (or `@import` it), or
+   self-host the files.
+
+3. **Set the token defaults** in your own CSS so the choice is the new baseline:
+
+   ```css
+   :root {
+     --font-display: "Space Grotesk", sans-serif;
+     --font-script: "Pinyon Script", cursive;
+   }
+   ```
+
+4. **Update `default`** for that role (and add the font to its `fonts` list if it
+   wasn't already there) so the panel treats it as the current baseline / reset
+   target rather than a temporary override.
+
+5. **Ship it.** Since the tweaker is gated behind `import.meta.env.DEV`, it's
+   already gone from production — the tokens carry the design on their own. Clear
+   `localStorage` (`<storageKey>:selections`) if a stale audition lingers.
+
+### Changing the candidates or the preview text
+
+Everything the panel offers comes from the `roles` prop — swap fonts, add your own,
+or change the sample text without touching the component. The samples should read
+like *your* page, not the defaults:
+
+```tsx
+import { TypeTweaker, defaultRoles } from 'type-tweaker';
+
+// Keep the default fonts + roles, just rewrite each preview line:
+const roles = defaultRoles.map(r => ({
+  ...r,
+  sample: { display: 'Your headline', script: 'your accent' }[r.key] ?? r.sample,
+}));
+
+<TypeTweaker roles={roles} />
+```
+
+Or define roles from scratch (add/remove fonts, point at your own token names) using
+the `TweakerRole` shape documented above.
+
 ## Features
 
 - **Live preview** — hover any candidate to see it on the real page; the menu renders each name in its own face.

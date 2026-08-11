@@ -1,4 +1,19 @@
-import { TypeTweaker } from '../../src';
+import { TypeTweaker, defaultRoles } from '../../src';
+
+// The panel's samples should echo THIS page, not the project it was extracted from.
+// Keep the default fonts + five roles; only swap each role's preview text.
+const PAGE_SAMPLES: Record<string, string> = {
+  display: 'Audition type',
+  body: 'Hover to preview, click to commit.',
+  script: 'no guesswork',
+  mono: '--font-mono',
+  serif: 'Ship the right type.',
+};
+
+const demoRoles = defaultRoles.map(role => ({
+  ...role,
+  sample: PAGE_SAMPLES[role.key] ?? role.sample,
+}));
 
 export function App() {
   return (
@@ -44,19 +59,19 @@ export function App() {
         <div className="grid">
           <div className="cell">
             <div className="var">Display <em>--font-display</em></div>
-            <div className="spec-display">Grotesk backbone</div>
+            <div className="spec-display">{PAGE_SAMPLES.display}</div>
           </div>
           <div className="cell">
             <div className="var">Script <em>--font-script</em></div>
-            <div className="spec-script">a Renaissance</div>
+            <div className="spec-script">{PAGE_SAMPLES.script}</div>
           </div>
           <div className="cell">
             <div className="var">Serif <em>--font-serif</em></div>
-            <div className="spec-serif">It will be assembled.</div>
+            <div className="spec-serif">{PAGE_SAMPLES.serif}</div>
           </div>
           <div className="cell">
             <div className="var">Mono <em>--font-mono</em></div>
-            <div className="spec-mono">3 : 4 : 5 : 7</div>
+            <div className="spec-mono">{PAGE_SAMPLES.mono}</div>
           </div>
           <div className="cell wide">
             <div className="var">Body <em>--font-sans</em></div>
@@ -89,6 +104,14 @@ export function App() {
   );
 }` }} />
         </pre>
+
+        <p className="keep">
+          <span className="k-num">→</span>
+          Landed on a combination? Hit <b>Copy stack</b> in the panel for the font
+          names plus a paste-ready Google Fonts link, then set those as your{' '}
+          <code>:root</code> token defaults. The pick you click is saved to your
+          browser only — this step is what ships it.
+        </p>
 
         <div className="features">
           <div className="feature">
@@ -126,7 +149,7 @@ export function App() {
       </div>
 
       {/* The star of the show — open by default so visitors see it immediately */}
-      <TypeTweaker defaultOpen storageKey="type-tweaker-demo" />
+      <TypeTweaker roles={demoRoles} defaultOpen storageKey="type-tweaker-demo" />
     </>
   );
 }

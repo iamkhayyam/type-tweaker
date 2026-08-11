@@ -12,7 +12,7 @@ export const defaultRoles: TweakerRole[] = [
     label: 'Display',
     cssVar: '--font-display',
     fallback: 'sans-serif',
-    sample: 'ADDICTS OF',
+    sample: 'Handgloves',
     default: 'Archivo',
     sampleStyle: { fontSize: '1.5rem', fontWeight: 700 },
     fonts: [
@@ -32,7 +32,7 @@ export const defaultRoles: TweakerRole[] = [
     label: 'Body',
     cssVar: '--font-sans',
     fallback: 'sans-serif',
-    sample: 'Think critically.',
+    sample: 'The quick brown fox.',
     default: 'Archivo',
     sampleStyle: { fontSize: '1.125rem' },
     fonts: [
@@ -51,7 +51,7 @@ export const defaultRoles: TweakerRole[] = [
     label: 'Script',
     cssVar: '--font-script',
     fallback: 'cursive',
-    sample: 'a Renaissance',
+    sample: 'Signature',
     default: 'Great Vibes',
     sampleStyle: { fontSize: '1.875rem' },
     fonts: [
@@ -74,7 +74,7 @@ export const defaultRoles: TweakerRole[] = [
     label: 'Mono',
     cssVar: '--font-mono',
     fallback: 'monospace',
-    sample: '3 : 4 : 5 : 7',
+    sample: 'AaBb 0123',
     default: 'IBM Plex Mono',
     sampleStyle: { fontSize: '1.125rem' },
     fonts: [
@@ -92,7 +92,7 @@ export const defaultRoles: TweakerRole[] = [
     label: 'Serif',
     cssVar: '--font-serif',
     fallback: 'serif',
-    sample: 'It will be assembled.',
+    sample: 'Typography',
     default: 'Instrument Serif',
     sampleStyle: { fontSize: '1.25rem' },
     fonts: [

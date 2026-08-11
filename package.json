@@ -1,6 +1,6 @@
 {
   "name": "type-tweaker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A draggable, dependency-free dev panel for auditioning fonts live on the page by hot-swapping CSS custom properties.",
   "type": "module",
   "main": "./dist/index.js",
